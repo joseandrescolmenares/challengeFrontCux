@@ -9,11 +9,15 @@ import axios from "axios";
     }
   };
 
-   export const postMessage = async () => {
+  export const postMessage = async (id,message) => {
+    console.log(message,"mesa")
     try {
-      const response = await axios.post("https://challengecux-production.up.railway.app/chat");
-      return response.data
+      const response = await axios.post("https://challengecux-production.up.railway.app/chat", {
+        message: message,
+        activityId: id
+      });
+      return response.data;
     } catch (error) {
       console.error(error);
     }
-  };
+};
