@@ -3,20 +3,21 @@ import { Input } from "./input";
 import { Button } from "./button";
 import { postMessage } from "../../services/api";
 
-export const ChatActivity = (initMessage) => {
+export const ChatActivity = ({ initMessage }) => {
   console.log(initMessage, "init");
-  const ai = { text: initMessage?.initMessage, type: "ai" };
+  const ai = { text: initMessage, type: "ai" };
   const [messages, setMessages] = useState([ai]);
   const [inputValue, setInputValue] = useState("");
 
   const handleMessageSend = async () => {
     if (inputValue.trim() === "") return;
     const newMessage = { text: inputValue, type: "user" };
-    setMessages([...messages, newMessage]);
+    const updatedMessages = [...messages, newMessage];
+    setMessages(updatedMessages);
     const responseMessage = await postMessage(2, inputValue);
     setInputValue("");
     const aiResponse = { text: responseMessage, type: "ai" };
-    setMessages([...messages, aiResponse]);
+    setMessages((prevMessages) => [...prevMessages, aiResponse]);
   };
 
   return (

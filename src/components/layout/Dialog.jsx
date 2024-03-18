@@ -17,7 +17,7 @@ export const DialogChat = ({ openDialog, setOpenDialog }) => {
   const [activitys, setActivitys] = React.useState([]);
   const [initChatActivity, setInitChatActivity] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [initMessage, setInitMessage] = React.useState('');
+  const [initMessage, setInitMessage] = React.useState("");
 
   React.useEffect(() => {
     const fetchActivity = async () => {
@@ -31,8 +31,7 @@ export const DialogChat = ({ openDialog, setOpenDialog }) => {
     setLoading(true);
     const message = "comenzar ejercicio";
     const responseMessage = await postMessage(id, message);
-    console.log(responseMessage, "chat");
-    setInitMessage(responseMessage)
+    setInitMessage(responseMessage);
     setLoading(false);
     setInitChatActivity(true);
   };
