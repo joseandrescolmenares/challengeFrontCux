@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="w-full h-screen flex justify-center items-center ">
       <Sidebar setOpenDialog={setOpenDialog} />
-      <DialogChat openDialog={openDialog}/>
+      <DialogChat openDialog={openDialog} setOpenDialog={setOpenDialog}/>
       <div className=" w-9/12 h-full relative">
         <Input
           type="text"
