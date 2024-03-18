@@ -1,23 +1,23 @@
+import "./App.css";
+import React from "react";
 
-import './App.css';
+import { Input } from "./components/ui/input";
+import { Sidebar } from "./components/layout/Sidebar";
+import { DialogChat } from "./components/layout/Dialog";
 
 function App() {
+  const [openDialog, setOpenDialog] = React.useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-screen flex justify-center items-center ">
+      <Sidebar setOpenDialog={setOpenDialog} />
+      <DialogChat openDialog={openDialog}/>
+      <div className=" w-9/12 h-full relative">
+        <Input
+          type="text"
+          placeholder="Escribir tu mensaje acá"
+          className=" absolute bottom-0 m-4  w-4/5"
+        />
+      </div>
     </div>
   );
 }
